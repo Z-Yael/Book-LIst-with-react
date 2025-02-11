@@ -15,7 +15,7 @@ const App = () => {
       { id: Math.round(Math.random() * 93971), title },
     ];
     setBooks(createdBooks);
-    console.log(books);
+    // console.log(books);
   };
 
   const handleEditBook = (id, newTitle) => {
