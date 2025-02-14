@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const CreateBook = ({ onCreate }) => {
   const [title, setTitle] = useState("");
+  const [disabled, setDisabled] = useState(true);
   const handleOnChange = (e) => {
     setTitle(e.target.value);
     // console.log(title);
   };
-
+  useEffect(() => {
+    setDisabled(title ? false : true);
+  }, [title]);
   const handleSubmit = (e) => {
     e.preventDefault();
     onCreate(title);
@@ -22,8 +25,8 @@ const CreateBook = ({ onCreate }) => {
           onChange={handleOnChange}
           placeholder="Enter the title of book..."
         />
-        <button className="button" onClick={handleSubmit}>
-          Craate
+        <button className="button" onClick={handleSubmit} disabled={disabled}>
+          Create
         </button>
       </form>
     </div>
